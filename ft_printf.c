@@ -6,46 +6,44 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:55:39 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/04 23:17:09 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/05 22:14:57 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_checkfmt(char *fmt, va_list arg)
+void	ft_checkfmt(char *fmt)
 {	
-	int		ret;
 	int		jump;
 
-	ret = 0;
 	jump = 0;
 	while (*fmt)
 	{
 		if (*fmt == '%')
 		{
+			ft_resetstruct();
 			jump =  ft_checkflags((char *)fmt + 1);
 			if (*(fmt + jump + 1) == '%')
-				ret += ft_putchar('%');
+				ft_putchar('%');
 			if (*(fmt + jump + 1) == 's')
-				ret += strconversion(va_arg(arg, char *));
+				strconversion(va_arg(g_args, char *));
 			if (*(fmt + jump + 1) == 'd')
-				ret += nbrconversion(va_arg(arg, int));
-			fmt += jump + 1; 
+				nbrconversion(va_arg(g_args, int));
+			fmt += jump + 1;
 		}	
 		else
-			ret += ft_putchar(*fmt);	
+			ft_putchar(*fmt);	
 		fmt++;
 	}
-	return (ret);
+//	printf("\nminus->%d\nzero->%d\nwidth->%d\nprec->%d\n", flags.minus, flags.zero, flags.width,flags.prec);
 }
 
 int	ft_printf(const char *fmt, ...)
 {
-	int		ret;
-	va_list arg;
-
-	va_start(arg, fmt);
-	ret = ft_checkfmt((char *)fmt, arg);
-	va_end(arg);
-	return (ret);
+	g_ret = 0;
+	va_start(g_args, fmt);
+	ft_checkfmt((char *)fmt);
+	va_end(g_args);
+	return (g_ret);
 }
+

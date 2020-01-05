@@ -1,34 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fmtconversion.c                                    :+:      :+:    :+:   */
+/*   convutils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/05 12:37:35 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/05 22:24:18 by razaha           ###   ########.fr       */
+/*   Created: 2020/01/05 15:00:35 by razaha            #+#    #+#             */
+/*   Updated: 2020/01/05 20:44:40 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	strconversion(char *s)
+void	ft_putchar(char c)
 {
-	ft_putstr(s);
+	write(1 , &c, 1);
+	g_ret++;
 }
 
-void	nbrconversion(int n)
+void	ft_putstr(char *s)
 {
-	g_nbrlen = 0;
 
-	ft_nbrlen(n);
-	if (flags.width <= g_nbrlen)
-		ft_putnbr(n);
-	else 
+	while(*s != '\0')
 	{
-		if (flags.zero)
-			ft_zero(flags.width - g_nbrlen, n);
-		else
-			ft_spaceleft(flags.width - g_nbrlen, n );
+		ft_putchar(*s);
+		s++;
 	}
+}
+
+void	ft_putnbr(int n)
+{
+	unsigned int inb;
+
+	if (n < 0)
+	{
+		ft_putchar('-');
+		inb = n * -1;
+	}
+	else
+		inb = n;
+	if (inb > 9)
+		ft_putnbr(inb / 10);
+	ft_putchar(inb % 10 + '0');
 }
