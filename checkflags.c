@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:11:44 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/06 18:44:31 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/07 00:21:03 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ char *ft_extractwidth(char *fmt)
 			return (ft_extractwidth(fmt + 1));
 		if (*fmt == '*')
 		{
-			flags.width = va_arg(g_args, int);
-			fmt += ft_nbrlen(flags.width);
+			
+			flags.zero ? (flags.zero = va_arg(g_args, int)) 
+			: (flags.width = va_arg(g_args, int));
+			fmt++;
 		}
 		else
 		{
-			flags.width = ft_atoi(fmt);
-			fmt += ft_nbrlen(flags.width);
+			flags.zero ? (flags.zero = ft_atoi(fmt))
+			: (flags.width = ft_atoi(fmt));
+			fmt += ft_nbrlen(flags.zero ? flags.zero : flags.width);
 		}
 		if (flags.width < 0)
 		{
@@ -51,9 +54,9 @@ char *ft_extractpreci(char *fmt)
 		else
 		{
 			flags.prec = ft_atoi(fmt + 1);
-			fmt += ft_nbrlen(flags.prec);
+			if (*(fmt + 1) >= '0' && *(fmt + 1) <= '9')
+				fmt += ft_nbrlen(flags.prec);
 		}
-		flags.zero = 0;
 		fmt++;
 	}
 	return (fmt);

@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:06:54 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/06 17:32:06 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/06 21:31:09 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void ft_resetstruct()
 	flags.zero = 0;
 	flags.width = 0;
 	flags.prec = -1;
-	lens.widthlen = 0;
-	lens.precilen = 0;
 }
 
 int ft_isconversion(char c)
