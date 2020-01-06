@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 21:42:41 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/05 22:24:22 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/06 18:47:48 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 
 void ft_spaceleft(int i, int n)
 {
-	ft_putnbr(n);
-	while(i-- )
+	while(i-- > 0)
 		ft_putchar(' ');
+	
+	if (flags.prec == -1)
+		ft_putnbr(n > 0 ? n : -n);
 }
 
 void ft_spaceright(int i, int n)
 {
-	while(i-- )
+	ft_putnbr(n > 0 ? n : -n);
+	while(i-- > 0)
 		ft_putchar(' ');
-	ft_putnbr(n);
 }
 
-void ft_zero(int i, int n)
+int ft_zero(int i, int n)
 {
-	while(i-- )
+	int c;
+
+	c = i;
+	while(i-- > 0)
 		ft_putchar('0');
-	ft_putnbr(n);
+	if (!flags.minus)
+		ft_putnbr(n > 0 ? n : -n);
+	return (c > 0 ? c : 0);
+
 }

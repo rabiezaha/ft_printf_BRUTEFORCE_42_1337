@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 12:37:35 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/05 22:24:18 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/06 18:51:25 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,21 @@ void	strconversion(char *s)
 
 void	nbrconversion(int n)
 {
-	g_nbrlen = 0;
+	int n_len;
 
-	ft_nbrlen(n);
-	if (flags.width <= g_nbrlen)
-		ft_putnbr(n);
-	else 
-	{
-		if (flags.zero)
-			ft_zero(flags.width - g_nbrlen, n);
-		else
-			ft_spaceleft(flags.width - g_nbrlen, n );
-	}
+	n_len = ft_nbrlen(n);
+	if (flags.minus == 0 && !flags.zero)
+		ft_spaceleft(flags.width - n_len, n);
+	 if (n < 0 && (flags.zero || flags.prec > -1))
+	 {
+        ft_putchar('-');
+	 	flags.prec++;
+	 }
+	if (flags.zero)
+		n_len += ft_zero(flags.width - n_len, n);
+	if (flags.prec > -1)
+		n_len += ft_zero(flags.prec - n_len, n);
+	if (flags.minus)
+		ft_spaceright(flags.width - n_len, n);
+
 }

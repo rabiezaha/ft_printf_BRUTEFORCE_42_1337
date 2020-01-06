@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:06:54 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/05 21:29:07 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/06 17:32:06 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,20 @@ int	ft_atoi(char *str)
 	return (res * sign);
 }
 
-void ft_nbrlen(int n)
+int ft_nbrlen(int n)
 {
+	int nbrlen;
 	unsigned int inb;
 
+	nbrlen = 0;
 	if (n < 0)
 	{
-		g_nbrlen++;
+		nbrlen++;
 		inb = n * -1;
 	}
 	else
 		inb = n;
 	if (inb > 9)
-		ft_nbrlen(inb / 10);
-	g_nbrlen ++;
+		return (nbrlen + ft_nbrlen(inb / 10) + 1);
+	return (nbrlen + 1) ;
 }
