@@ -6,24 +6,22 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:11:44 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/07 00:21:03 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/07 15:11:38 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_extractwidth(char *fmt)
+char	*ft_extractwidth(char *fmt)
 {
 	if (!ft_isconversion(*fmt) && *fmt != '.')
 	{
-		if (*fmt == '-' && (flags.minus = 1))
-			return (ft_extractwidth(fmt + 1));
-		if (*fmt == '0' && (flags.zero = 1))
+		if ((*fmt == '-' && (flags.minus = 1)) ||
+			(*fmt == '0' && (flags.zero = 1)))
 			return (ft_extractwidth(fmt + 1));
 		if (*fmt == '*')
 		{
-			
-			flags.zero ? (flags.zero = va_arg(g_args, int)) 
+			flags.zero ? (flags.zero = va_arg(g_args, int))
 			: (flags.width = va_arg(g_args, int));
 			fmt++;
 		}
@@ -42,9 +40,9 @@ char *ft_extractwidth(char *fmt)
 	return (fmt);
 }
 
-char *ft_extractpreci(char *fmt)
+char	*ft_extractpreci(char *fmt)
 {
-	if(*fmt == '.')
+	if (!ft_isconversion(*fmt) && *fmt == '.')
 	{
 		if (*(fmt + 1) == '*')
 		{

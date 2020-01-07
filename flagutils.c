@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:06:54 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/06 21:31:09 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/07 15:04:30 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void ft_resetstruct()
 
 int ft_isconversion(char c)
 {
-	if(c == 's' || c == 'd')
+	if(c == 's' || c == 'd' || c== '%')
 		return (1);
 	return (0);
 }
