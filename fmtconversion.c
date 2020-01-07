@@ -6,11 +6,16 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 12:37:35 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/07 15:59:54 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/07 16:32:58 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	charconversio(char c)
+{
+	(void)c;
+}
 
 void	strconversion(char *s)
 {

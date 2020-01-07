@@ -22,13 +22,16 @@ t_flag flags;
 
 int	ft_printf(const char *fmt, ...);
 char *ft_checkflags(char *fmt);
+
 void	strconversion(char *s);
-void nbrconversion(int n);
+void	nbrconversion(int n);
 
 int	ft_isconversion(char c);
+
 void ft_putchar(char c);
 void ft_putstr(char *s);
 void ft_putnbr(int n);
+
 int ft_atoi(char *str);
 int	ft_nbrlen(int n);
 void ft_resetstruct();
