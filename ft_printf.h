@@ -42,6 +42,7 @@ void ft_puthex_p(unsigned long n, int x);
 int ft_atoi(char *str);
 int	ft_nbrlen(int n);
 int ft_hexlen(unsigned int n);
+int ft_hexlen_p(unsigned long n);
 void ft_resetstruct();
 
 void ft_space(int i);

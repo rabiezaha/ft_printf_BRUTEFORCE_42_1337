@@ -2,10 +2,17 @@
 
 void	dconversion2(int n, int n_len)
 {
+	//flags.minus = flags.zero < 0 ? 1 : flags.minus;
+	//flags.zero = flags.zero < 0 ? -flags.zero : flags.zero;
 	if (flags.minus)
 	{
 		if (n < 0 && n != -2147483648)
 			ft_putchar('-');
+		/*if (flags.zero)
+		{
+			flags.width = flags.zero;
+			flags.zero = 0;
+		}*/
 		ft_zero(flags.zero - n_len);
 		ft_putnbr(n < 0 ? -n : n);
 		ft_space(flags.width - (flags.zero > n_len ? flags.zero : n_len));

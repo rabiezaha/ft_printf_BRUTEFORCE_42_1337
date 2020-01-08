@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:11:44 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 15:01:11 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 19:07:30 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ char	*ft_extractwidth(char *fmt)
 			: (flags.width = ft_atoi(fmt));
 			fmt += ft_nbrlen(flags.zero ? flags.zero : flags.width);
 		}
-		if (flags.width < 0)
-		{
-			flags.minus = 1;
+		if (flags.width < 0 && (flags.minus = 1))
 			flags.width *= -1;
-		}
 	}
 	return (fmt);
 }

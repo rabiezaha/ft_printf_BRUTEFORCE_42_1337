@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:06:54 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 14:41:31 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 18:19:55 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ int ft_hexlen(unsigned int n)
 	if (n > 15)
 	{
 		return (ft_hexlen(n/16) + 1);
+	}
+	return (1);
+}
+
+int ft_hexlen_p(unsigned long n)
+{
+	if (n > 15)
+	{
+		return (ft_hexlen_p(n/16) + 1);
 	}
 	return (1);
 }

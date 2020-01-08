@@ -6,47 +6,47 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:55:39 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 16:06:52 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 18:49:23 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_checkfmt(char *fmt)
-{	
-	while (*fmt != '\0')
-	{
-		if (*fmt == '%')
-		{
-			ft_resetstruct();
-			fmt = ft_checkflags(fmt + 1);
-			if (*(fmt) == '%')
-				prconversion('%');
-			if (*(fmt) == 'c')
-				cconversion(va_arg(g_args, int));
-			if (*(fmt) == 's')
-				sconversion(va_arg(g_args, char *));
-			if (*(fmt) == 'p')
-				pconversion(va_arg(g_args, unsigned long));
-			if (*(fmt) == 'd' || *(fmt) == 'i')
-				dconversion(va_arg(g_args, int));
-			if (*(fmt) == 'u')
-				uconversion(va_arg(g_args,unsigned int));
-			if (*(fmt) == 'x' || *(fmt) == 'X')
-				xconversion(va_arg(g_args,unsigned int), (*(fmt) == 'x' ? 0 : 1));
-		}	
-		else
-			ft_putchar(*fmt);	
-		fmt++;
-	}
-//	printf("\nminus->%d\nzero->%d\nwidth->%d\nprec->%d\n", flags.minus, flags.zero, flags.width,flags.prec);
+char	*ft_checkfmt(char *fmt)
+{
+	ft_resetstruct();
+	fmt = ft_checkflags(fmt + 1);
+	if (*(fmt) == '%')
+		prconversion('%');
+	else if (*(fmt) == 'c')
+		cconversion(va_arg(g_args, int));
+	else if (*(fmt) == 's')
+		sconversion(va_arg(g_args, char *));
+	else if (*(fmt) == 'p')
+		pconversion(va_arg(g_args, unsigned long));
+	else if (*(fmt) == 'd' || *(fmt) == 'i')
+		dconversion(va_arg(g_args, int));
+	else if (*(fmt) == 'u')
+		uconversion(va_arg(g_args, unsigned int));
+	else if (*(fmt) == 'x' || *(fmt) == 'X')
+		xconversion(va_arg(g_args, unsigned int), (*(fmt) == 'x' ? 0 : 1));
+	else
+		return (fmt - 1);
+	return (fmt);
 }
 
 int	ft_printf(const char *fmt, ...)
 {
 	g_ret = 0;
 	va_start(g_args, fmt);
-	ft_checkfmt((char *)fmt);
+	while (*fmt != '\0')
+	{
+		if (*fmt == '%')
+			fmt = ft_checkfmt((char *)fmt);
+		else
+			ft_putchar(*fmt);
+		fmt++;
+	}
 	va_end(g_args);
 	return (g_ret);
 }
