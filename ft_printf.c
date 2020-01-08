@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:55:39 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 18:49:23 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 23:04:22 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_printf(const char *fmt, ...)
 			ft_putchar(*fmt);
 		fmt++;
 	}
+// printf("minus:%d\nzero:%d\nwidth:%d\nprec:%d\n", flags.minus,flags.zero,flags.width,flags.prec);
 	va_end(g_args);
 	return (g_ret);
 }

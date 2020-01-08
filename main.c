@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:49:09 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 18:52:30 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 23:16:15 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main()
 	
 	int n;
 	int m;
-	n = ft_printf("|%0*d|\n", -7, -54);
-	m = printf("|%0*d|\n", -7, -54);
+	n = ft_printf("|%0.d|\n", 0);
+	m = printf("|%0.d|\n", 0);
 	printf("\n%d\n%d\n",n,m);
 	return 0;
 }

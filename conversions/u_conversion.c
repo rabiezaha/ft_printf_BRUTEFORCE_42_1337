@@ -19,10 +19,12 @@ void	uconversion2(unsigned int n, int n_len)
 void	uconversion(unsigned int n)
 {
 	int n_len;
-
+	
 	n_len = ft_nbrlen(n);
 	if (flags.prec > -1)
 	{
+		flags.width = (flags.zero ? flags.zero :flags.width);
+		flags.zero = flags.prec;
 		if (n == 0 && !flags.prec)
 		{
 			if (!flags.width)
@@ -36,7 +38,6 @@ void	uconversion(unsigned int n)
 				flags.minus = 1;
 			flags.width = (flags.zero < 0 ? -flags.zero : flags.zero);
 		}
-		flags.zero = flags.prec;
 	}
 	uconversion2(n, n_len);
 }

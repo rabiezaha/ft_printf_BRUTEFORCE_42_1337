@@ -28,7 +28,7 @@ void	cconversion(char c);
 void	sconversion(char *s);
 void	dconversion(int n);
 void	uconversion(unsigned int n);
-void	xconversion(int n , int x);
+void	xconversion(unsigned int n, int x);
 void	pconversion(unsigned long n);
 int	ft_isconversion(char c);
 
@@ -40,7 +40,7 @@ void ft_puthex(unsigned int n, int x);
 void ft_puthex_p(unsigned long n, int x);
 
 int ft_atoi(char *str);
-int	ft_nbrlen(int n);
+int	ft_nbrlen(long n);
 int ft_hexlen(unsigned int n);
 int ft_hexlen_p(unsigned long n);
 void ft_resetstruct();

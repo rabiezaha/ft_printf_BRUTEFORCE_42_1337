@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:06:54 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 18:19:55 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 23:51:45 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_atoi(char *str)
 	return (res * sign);
 }
 
-int ft_nbrlen(int n)
+int ft_nbrlen(long n)
 {
 	int nbrlen;
 	unsigned int inb;

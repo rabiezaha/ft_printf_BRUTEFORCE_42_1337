@@ -2,17 +2,10 @@
 
 void	dconversion2(int n, int n_len)
 {
-	//flags.minus = flags.zero < 0 ? 1 : flags.minus;
-	//flags.zero = flags.zero < 0 ? -flags.zero : flags.zero;
 	if (flags.minus)
 	{
 		if (n < 0 && n != -2147483648)
 			ft_putchar('-');
-		/*if (flags.zero)
-		{
-			flags.width = flags.zero;
-			flags.zero = 0;
-		}*/
 		ft_zero(flags.zero - n_len);
 		ft_putnbr(n < 0 ? -n : n);
 		ft_space(flags.width - (flags.zero > n_len ? flags.zero : n_len));
@@ -30,12 +23,14 @@ void	dconversion2(int n, int n_len)
 void	dconversion(int n)
 {
 	int n_len;
-
+	
 	n_len = ft_nbrlen(n);
 	if (flags.prec > -1)
 	{
 		if (n < 0)
 			flags.prec++;
+		flags.width = (flags.zero ? flags.zero :flags.width);
+		flags.zero = flags.prec;
 		if (n == 0 && !flags.prec)
 		{
 			if (!flags.width)
@@ -49,7 +44,6 @@ void	dconversion(int n)
 				flags.minus = 1;
 			flags.width = (flags.zero < 0 ? -flags.zero : flags.zero);
 		}
-		flags.zero = flags.prec;
 	}
 	dconversion2(n, n_len);
 }
