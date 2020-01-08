@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:55:39 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/07 15:59:43 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 01:07:54 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@ void	ft_checkfmt(char *fmt)
 			ft_resetstruct();
 			fmt = ft_checkflags(fmt + 1);
 			if (*(fmt) == '%')
-				ft_putchar('%');
+				charconversion('%');
 			if (*(fmt) == 's')
 				strconversion(va_arg(g_args, char *));
+			if (*(fmt) == 'c')
+				charconversion(va_arg(g_args, int));
 			if (*(fmt) == 'd')
-				nbrconversion(va_arg(g_args, int));
+				dconversion(va_arg(g_args, int));
+			if (*(fmt) == 'u')
+				uconversion(va_arg(g_args,unsigned int));
+			if (*(fmt) == 'x' || *(fmt) == 'X')
+				xconversion(va_arg(g_args,unsigned int), (*(fmt) == 'x' ? 0 : 1));
 		}	
 		else
 			ft_putchar(*fmt);	

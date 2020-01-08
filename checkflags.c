@@ -6,7 +6,7 @@
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:11:44 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/07 15:11:38 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/07 23:10:32 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,14 @@ char	*ft_extractpreci(char *fmt)
 		if (*(fmt + 1) == '*')
 		{
 			flags.prec = va_arg(g_args, int);
+			if (flags.prec < 0)
+				flags.prec = -1;
 			fmt++;
 		}
 		else
 		{
+			while (*(fmt + 1) == '0')
+				fmt++;
 			flags.prec = ft_atoi(fmt + 1);
 			if (*(fmt + 1) >= '0' && *(fmt + 1) <= '9')
 				fmt += ft_nbrlen(flags.prec);

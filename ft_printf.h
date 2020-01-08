@@ -24,16 +24,21 @@ int	ft_printf(const char *fmt, ...);
 char *ft_checkflags(char *fmt);
 
 void	strconversion(char *s);
-void	nbrconversion(int n);
-
+void	dconversion(int n);
+void	uconversion(unsigned int n);
+void	xconversion(int n , int x);
+void	charconversion(char c);
 int	ft_isconversion(char c);
 
+int	ft_strlen(const char *s);
 void ft_putchar(char c);
-void ft_putstr(char *s);
-void ft_putnbr(int n);
+void ft_putstr(char *s ,int i);
+void ft_putnbr(long n);
+void ft_puthex(long n, int x);
 
 int ft_atoi(char *str);
 int	ft_nbrlen(int n);
+int ft_hexlen(int n);
 void ft_resetstruct();
 
 void ft_space(int i);

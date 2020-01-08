@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/04 14:49:09 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 01:08:23 by razaha           ###   ########.fr       */
+/*   Created: 2020/01/05 21:42:41 by razaha            #+#    #+#             */
+/*   Updated: 2020/01/07 23:24:35 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-
-int	main()
+void ft_space(int i)
 {
-	int n;
-	int m;
-	n = ft_printf("|%3X|\n", 10);
-	m = printf("|%3X|\n", 10);
-	printf("\n%d\n%d",n,m);
-	//ft_tohex(94984984928);
-	return 0;
+	while(i-- > 0)
+		ft_putchar(' ');
+}
+
+void ft_zero(int i)
+{
+	while(i-- > 0)
+		ft_putchar('0');
 }

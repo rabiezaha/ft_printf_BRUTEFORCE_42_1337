@@ -1,7 +1,7 @@
-SRC = convutils.c     fmtconversion.c utils.c \
-checkflags.c    flagutils.c     ft_printf.c
+SRC = conversions/*.c      utils/*.c \
+checkflags.c ft_printf.c
 
-OBJSRC = $(SRC:%.c=%.o)
+OBJSRC = *.o
 
 CC = gcc -Wall -Wextra -Werror 
 
