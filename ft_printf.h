@@ -23,22 +23,25 @@ t_flag flags;
 int	ft_printf(const char *fmt, ...);
 char *ft_checkflags(char *fmt);
 
-void	strconversion(char *s);
+void	prconversion(char c);
+void	cconversion(char c);
+void	sconversion(char *s);
 void	dconversion(int n);
 void	uconversion(unsigned int n);
 void	xconversion(int n , int x);
-void	charconversion(char c);
+void	pconversion(unsigned long n);
 int	ft_isconversion(char c);
 
 int	ft_strlen(const char *s);
 void ft_putchar(char c);
 void ft_putstr(char *s ,int i);
 void ft_putnbr(long n);
-void ft_puthex(long n, int x);
+void ft_puthex(unsigned int n, int x);
+void ft_puthex_p(unsigned long n, int x);
 
 int ft_atoi(char *str);
 int	ft_nbrlen(int n);
-int ft_hexlen(int n);
+int ft_hexlen(unsigned int n);
 void ft_resetstruct();
 
 void ft_space(int i);

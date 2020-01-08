@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:00:35 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 01:23:09 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 14:38:44 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,35 @@ void	ft_putnbr(long n)
 	ft_putchar(inb % 10 + '0');
 }
 
-void ft_puthex(long n , int x)
+void ft_puthex(unsigned int n, int x)
 {
 	char *hex;
 	char *HEX;
 
 	hex = "0123456789abcdef";
 	HEX = "0123456789ABCDEF";
-	
-	if(n > 0)
+	if (n > 15)
 	{
 		ft_puthex(n/16, x);
 		ft_putchar(x == 0 ? hex[n%16] : HEX[n%16]);
 	}
+	else
+		ft_putchar(x == 0 ? hex[n%16] : HEX[n%16]);
 }
+
+void ft_puthex_p(unsigned long n, int x)
+{
+	char *hex;
+	char *HEX;
+
+	hex = "0123456789abcdef";
+	HEX = "0123456789ABCDEF";
+	if (n > 15)
+	{
+		ft_puthex_p(n/16, x);
+		ft_putchar(x == 0 ? hex[n%16] : HEX[n%16]);
+	}
+	else
+		ft_putchar(x == 0 ? hex[n%16] : HEX[n%16]);
+}
+

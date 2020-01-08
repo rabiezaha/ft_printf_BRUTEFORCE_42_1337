@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:06:54 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 01:22:46 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 14:41:31 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void ft_resetstruct()
 
 int ft_isconversion(char c)
 {
-	if(c == 's' || c == 'd' || c == 'c' || c == '%' || c == 'u' || c == 'x'|| c == 'X')
+	if(c == 's' || c == 'd' || c == 'i' || c == 'c' || c == '%' 
+	|| c == 'u' || c == 'x'|| c == 'X' || c == 'p')
 		return (1);
 	return (0);
 }
@@ -71,15 +72,11 @@ int ft_nbrlen(int n)
 	return (nbrlen + 1) ;
 }
 
-int ft_hexlen(int n)
+int ft_hexlen(unsigned int n)
 {
-	int hexlen;
-
-	hexlen = 0;
-	if (n > 0)
+	if (n > 15)
 	{
-		ft_hexlen(n/16);
-		hexlen++;
+		return (ft_hexlen(n/16) + 1);
 	}
-	return (hexlen);
+	return (1);
 }

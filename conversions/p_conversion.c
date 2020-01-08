@@ -1,35 +1,47 @@
 #include "../ft_printf.h"
 
-void	xconversion2(int n, int n_len, int x)
+void	pconversion2(unsigned long n, int n_len)
 {
 	if (flags.minus)
 	{
+        ft_putstr("0x",2);
 		ft_zero(flags.zero - n_len);
-		ft_puthex(n, x);
+		ft_puthex_p(n, 0);
 		ft_space(flags.width - (flags.zero > n_len ? flags.zero : n_len));
 	}
 	else
 	{
 		ft_space(flags.width - (flags.zero > n_len ? flags.zero : n_len));
+        ft_putstr("0x",2);
 		ft_zero(flags.zero - n_len);
-		ft_puthex(n, x);
+		ft_puthex_p(n, 0);
 	}
 }
 
-void	xconversion(int n, int x)
+void	pconversion(unsigned long n)
 {
 	int n_len;
 
-	n_len = ft_hexlen(n);
+	n_len = ft_hexlen(n) + 2;
 	if (flags.prec > -1)
 	{
-		if (n < 0)
-			flags.prec++;
 		if (n == 0 && !flags.prec)
 		{
 			if (!flags.width)
+            {
+                ft_putstr("0x",2);
 				return ;
-			ft_space(flags.width);
+            }
+            if (flags.minus)
+            {
+                ft_putstr("0x",2);
+                ft_space(flags.width - 2);
+            }
+            else
+            {
+                ft_space(flags.width - 2);
+                ft_putstr("0x",2);
+            }
 			return ;
 		}
 		if (flags.prec > flags.width)
@@ -40,5 +52,5 @@ void	xconversion(int n, int x)
 		}
 		flags.zero = flags.prec;
 	}
-	xconversion2(n, n_len, x);
+	pconversion2(n, n_len);
 }

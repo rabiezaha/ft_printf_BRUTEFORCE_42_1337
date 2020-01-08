@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:49:09 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 01:08:23 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 16:28:03 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 int	main()
 {
+	
 	int n;
 	int m;
-	n = ft_printf("|%3X|\n", 10);
-	m = printf("|%3X|\n", 10);
-	printf("\n%d\n%d",n,m);
-	//ft_tohex(94984984928);
+	n = ft_printf("|%-03%|\n");
+	m = printf("|%-03%|\n");
+	printf("\n%d\n%d\n",n,m);
+	//ft_puthex(590, 1);
 	return 0;
 }

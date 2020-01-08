@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 14:55:39 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/08 01:07:54 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/08 16:06:52 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 void	ft_checkfmt(char *fmt)
 {	
-	while (*fmt)
+	while (*fmt != '\0')
 	{
 		if (*fmt == '%')
 		{
 			ft_resetstruct();
 			fmt = ft_checkflags(fmt + 1);
 			if (*(fmt) == '%')
-				charconversion('%');
-			if (*(fmt) == 's')
-				strconversion(va_arg(g_args, char *));
+				prconversion('%');
 			if (*(fmt) == 'c')
-				charconversion(va_arg(g_args, int));
-			if (*(fmt) == 'd')
+				cconversion(va_arg(g_args, int));
+			if (*(fmt) == 's')
+				sconversion(va_arg(g_args, char *));
+			if (*(fmt) == 'p')
+				pconversion(va_arg(g_args, unsigned long));
+			if (*(fmt) == 'd' || *(fmt) == 'i')
 				dconversion(va_arg(g_args, int));
 			if (*(fmt) == 'u')
 				uconversion(va_arg(g_args,unsigned int));

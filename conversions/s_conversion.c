@@ -1,7 +1,7 @@
 
 #include "../ft_printf.h"
 
-void	strconversion(char *s)
+void	sconversion(char *s)
 {
 	if (s == NULL)
 		s = "(null)";

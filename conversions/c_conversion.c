@@ -1,7 +1,7 @@
 
 #include "../ft_printf.h"
 
-void	charconversion(char c)
+void	cconversion(char c)
 {
 	if (flags.minus)
 	{
