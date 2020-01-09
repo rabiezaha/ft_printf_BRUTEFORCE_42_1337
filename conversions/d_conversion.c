@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   d_conversion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 00:41:59 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/09 00:43:40 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/09 13:45:17 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	dconversion2(int n, int n_len)
 {
-	if (flags.minus)
+	if (g_flags.minus)
 	{
 		if (n < 0 && n != -2147483648)
 			ft_putchar('-');
-		ft_zero(flags.zero - n_len);
+		ft_zero(g_flags.zero - n_len);
 		ft_putnbr(n < 0 ? -n : n);
-		ft_space(flags.width - (flags.zero > n_len ? flags.zero : n_len));
+		ft_space(g_flags.width - (g_flags.zero > n_len ? g_flags.zero : n_len));
 	}
 	else
 	{
-		ft_space(flags.width - (flags.zero > n_len ? flags.zero : n_len));
+		ft_space(g_flags.width - (g_flags.zero > n_len ? g_flags.zero : n_len));
 		if (n < 0 && n != -2147483648)
 			ft_putchar('-');
-		ft_zero(flags.zero - n_len);
+		ft_zero(g_flags.zero - n_len);
 		ft_putnbr(n < 0 ? -n : n);
 	}
 }
@@ -37,24 +37,24 @@ void	dconversion(int n)
 	int n_len;
 
 	n_len = ft_nbrlen(n);
-	if (flags.prec > -1)
+	if (g_flags.prec > -1)
 	{
 		if (n < 0)
-			flags.prec++;
-		flags.width = (flags.zero ? flags.zero : flags.width);
-		flags.zero = flags.prec;
-		if (n == 0 && !flags.prec)
+			g_flags.prec++;
+		g_flags.width = (g_flags.zero ? g_flags.zero : g_flags.width);
+		g_flags.zero = g_flags.prec;
+		if (n == 0 && !g_flags.prec)
 		{
-			if (!flags.width)
+			if (!g_flags.width)
 				return ;
-			ft_space(flags.width);
+			ft_space(g_flags.width);
 			return ;
 		}
-		if (flags.prec > flags.width)
+		if (g_flags.prec > g_flags.width)
 		{
-			if (flags.zero < 0)
-				flags.minus = 1;
-			flags.width = (flags.zero < 0 ? -flags.zero : flags.zero);
+			if (g_flags.zero < 0)
+				g_flags.minus = 1;
+			g_flags.width = (g_flags.zero < 0 ? -g_flags.zero : g_flags.zero);
 		}
 	}
 	dconversion2(n, n_len);

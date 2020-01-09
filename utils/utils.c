@@ -6,7 +6,7 @@
 /*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 21:42:41 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/09 01:21:52 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/09 13:50:52 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_zero(int i)
 
 void	ft_resetstruct(void)
 {
-	flags.minus = 0;
-	flags.zero = 0;
-	flags.width = 0;
-	flags.prec = -1;
+	g_flags.minus = 0;
+	g_flags.zero = 0;
+	g_flags.width = 0;
+	g_flags.prec = -1;
 }
 
 int		ft_isconversion(char c)
@@ -42,10 +42,10 @@ int		ft_isconversion(char c)
 
 char	*skip_zero(char *fmt)
 {
-	flags.zero = ft_atoi(fmt);
+	g_flags.zero = ft_atoi(fmt);
 	while (*fmt >= '0' && *fmt <= '9')
 		fmt++;
 	if (*fmt == '*')
-		flags.zero = 1;
+		g_flags.zero = 1;
 	return (fmt - 1);
 }

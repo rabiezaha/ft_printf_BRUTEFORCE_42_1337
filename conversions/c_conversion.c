@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   c_conversion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: razaha <razaha@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 00:41:25 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/09 00:41:34 by razaha           ###   ########.fr       */
+/*   Updated: 2020/01/09 13:45:17 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	cconversion(char c)
 {
-	if (flags.minus)
+	if (g_flags.minus)
 	{
 		ft_putchar(c);
-		ft_space(flags.width - 1);
+		ft_space(g_flags.width - 1);
 	}
 	else
 	{
-		ft_space(flags.width - 1);
+		ft_space(g_flags.width - 1);
 		ft_putchar(c);
 	}
 }
