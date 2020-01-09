@@ -47,5 +47,6 @@ void ft_resetstruct();
 
 void ft_space(int i);
 void ft_zero(int i);
+char	*skip_zero(char *fmt);
 
 #endif

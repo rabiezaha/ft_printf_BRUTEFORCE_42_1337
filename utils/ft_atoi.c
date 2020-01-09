@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_conversion.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/09 00:40:55 by razaha            #+#    #+#             */
-/*   Updated: 2020/01/09 00:41:14 by razaha           ###   ########.fr       */
+/*   Created: 2020/01/09 01:27:43 by razaha            #+#    #+#             */
+/*   Updated: 2020/01/09 01:27:45 by razaha           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	sconversion(char *s)
+int		ft_atoi(char *str)
 {
-	if (s == NULL)
-		s = "(null)";
-	if (flags.minus)
+	int sign;
+	int res;
+
+	sign = 1;
+	res = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		ft_putstr(s, flags.prec);
-		ft_space(flags.width - ((flags.prec > ft_strlen(s)
-		|| flags.prec == -1) ? ft_strlen(s) : flags.prec));
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	else
+	while (*str)
 	{
-		ft_space(flags.width - ((flags.prec > ft_strlen(s)
-		|| flags.prec == -1) ? ft_strlen(s) : flags.prec));
-		ft_putstr(s, flags.prec);
+		if (*str >= '0' && *str <= '9')
+			res = res * 10 + *str - 48;
+		else
+			return (res * sign);
+		str++;
 	}
+	return (res * sign);
 }

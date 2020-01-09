@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   x_conversion.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/09 00:44:07 by razaha            #+#    #+#             */
+/*   Updated: 2020/01/09 00:44:46 by razaha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 void	xconversion2(unsigned int n, int n_len, int x)
@@ -19,11 +31,11 @@ void	xconversion2(unsigned int n, int n_len, int x)
 void	xconversion(unsigned int n, int x)
 {
 	int n_len;
-	
+
 	n_len = ft_hexlen(n);
 	if (flags.prec > -1)
 	{
-		flags.width = (flags.zero ? flags.zero :flags.width);
+		flags.width = (flags.zero ? flags.zero : flags.width);
 		flags.zero = flags.prec;
 		if (n == 0 && !flags.prec)
 		{

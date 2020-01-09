@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   u_conversion.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: razaha <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/09 00:45:15 by razaha            #+#    #+#             */
+/*   Updated: 2020/01/09 00:45:58 by razaha           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 void	uconversion2(unsigned int n, int n_len)
@@ -19,11 +31,11 @@ void	uconversion2(unsigned int n, int n_len)
 void	uconversion(unsigned int n)
 {
 	int n_len;
-	
+
 	n_len = ft_nbrlen(n);
 	if (flags.prec > -1)
 	{
-		flags.width = (flags.zero ? flags.zero :flags.width);
+		flags.width = (flags.zero ? flags.zero : flags.width);
 		flags.zero = flags.prec;
 		if (n == 0 && !flags.prec)
 		{
